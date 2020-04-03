@@ -1,0 +1,8 @@
+{
+  "name": "MyTopPanel",
+  "description": "really hides the toppanel",
+  "uuid": "mytoppanel@keilbaum.de",
+  "shell-version": [
+    "3.36"
+  ]
+}
