@@ -1,6 +1,6 @@
 /* Add your custom extension styling here */
 #panel.transparent-top-bar--transparent {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .straight-panel-corner.panel-corner {
     -panel-corner-radius: 0;

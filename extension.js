@@ -19,6 +19,7 @@
 /* exported init */
 
 const Main = imports.ui.main;
+const Tweener = imports.ui.tweener;
 
 const panel = Main.panel.actor;
 const panel_box = panel.get_parent();
@@ -28,13 +29,23 @@ const app_menu = Main.panel._leftBox.get_child_at_index(1);
 let show_event = false;
 let hide_event = false;
 
+let ANIMATION_SPEED = 0.45;
+
 function hide_panel() {
     panel_box.hide();
+    Tweener.addTween(panel, {
+        opacity: 0,
+            time: ANIMATION_SPEED
+        });
     panel_box.set_scale(1.0, 0.0);
 }
 
 function show_panel() {
     panel_box.show();
+    Tweener.addTween(panel, {
+        opacity: 255,
+            time: ANIMATION_SPEED
+        });
     panel_box.set_scale(1.0, 1.0);
 }
 
@@ -58,7 +69,6 @@ function enable() {
     show_event = Main.overview.connect('showing', show_panel);
     hide_event = Main.overview.connect('hiding', hide_panel);
     // app menu
-    app_menu.hide();
     app_menu.set_scale(0.0,0.0);
     hide_panel();
     addStyles();
@@ -68,7 +78,6 @@ function disable() {
     if(show_event) Main.overview.disconnect(show_event);
     if(hide_event) Main.overview.disconnect(hide_event);
     // app menu
-    app_menu.show();
     app_menu.set_scale(1.0,1.0);
     removeStyles();
     show_panel();
