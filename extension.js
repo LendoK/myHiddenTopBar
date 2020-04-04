@@ -23,6 +23,7 @@ const Main = imports.ui.main;
 const panel = Main.panel.actor;
 const panel_box = panel.get_parent();
 
+
 let show_event = false;
 let hide_event = false;
 
@@ -55,6 +56,8 @@ function init() {}
 function enable() {
     show_event = Main.overview.connect('showing', show_panel);
     hide_event = Main.overview.connect('hiding', hide_panel);
+    // app menu
+    Main.panel._leftBox.get_child_at_index(1).hide();
     hide_panel();
     addStyles();
 }
@@ -62,6 +65,8 @@ function enable() {
 function disable() {
     if(show_event) Main.overview.disconnect(show_event);
     if(hide_event) Main.overview.disconnect(hide_event);
+    // app menu
+    Main.panel._leftBox.get_child_at_index(1).show();
     removeStyles();
     show_panel();
 }
