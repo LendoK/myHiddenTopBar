@@ -36,16 +36,32 @@ function show_panel() {
     panel_box.set_scale(1.0, 1.0);
 }
 
+function addStyles()
+{
+    Main.panel.add_style_class_name('transparent-top-bar--transparent');
+    Main.panel._leftCorner.actor.add_style_class_name('straight-panel-corner');
+    Main.panel._rightCorner.actor.add_style_class_name('straight-panel-corner');
+}
+
+function removeStyles()
+{
+    Main.panel.remove_style_class_name('transparent-top-bar--transparent');
+    Main.panel._leftCorner.actor.remove_style_class_name('straight-panel-corner');
+    Main.panel._rightCorner.actor.remove_style_class_name('straight-panel-corner');
+}
+
 function init() {}
 
 function enable() {
     show_event = Main.overview.connect('showing', show_panel);
     hide_event = Main.overview.connect('hiding', hide_panel);
     hide_panel();
+    addStyles();
 }
 
 function disable() {
     if(show_event) Main.overview.disconnect(show_event);
     if(hide_event) Main.overview.disconnect(hide_event);
+    removeStyles();
     show_panel();
 }
