@@ -22,6 +22,7 @@ const Main = imports.ui.main;
 
 const panel = Main.panel.actor;
 const panel_box = panel.get_parent();
+const app_menu = Main.panel._leftBox.get_child_at_index(1);
 
 
 let show_event = false;
@@ -57,7 +58,8 @@ function enable() {
     show_event = Main.overview.connect('showing', show_panel);
     hide_event = Main.overview.connect('hiding', hide_panel);
     // app menu
-    Main.panel._leftBox.get_child_at_index(1).hide();
+    app_menu.hide();
+    app_menu.set_scale(0.0,0.0);
     hide_panel();
     addStyles();
 }
@@ -66,7 +68,8 @@ function disable() {
     if(show_event) Main.overview.disconnect(show_event);
     if(hide_event) Main.overview.disconnect(hide_event);
     // app menu
-    Main.panel._leftBox.get_child_at_index(1).show();
+    app_menu.show();
+    app_menu.set_scale(1.0,1.0);
     removeStyles();
     show_panel();
 }
