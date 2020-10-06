@@ -19,7 +19,7 @@
 /* exported init */
 
 const Main = imports.ui.main;
-const Tweener = imports.ui.tweener;
+const Tweener = imports.tweener.tweener;
 
 const panel = Main.panel.actor;
 const panel_box = panel.get_parent();
